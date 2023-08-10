@@ -1,0 +1,30 @@
+<body>
+    <form [formGroup]="regForm" >
+        <div class="container">
+            <div class="signup">
+                <h1>Sign up </h1>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" name="email" formControlName="email" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                  </div>
+                  <div *ngIf="this.regForm.get('email')?.touched&&this.regForm.get('email')?.errors"
+                        class="mb-3 text-danger">
+                        *Invalid e-mail
+                  </div>
+                <div id="output"></div>
+                <div class="form-floating">
+                    <input type="password" name="pswd" formControlName="pswd" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                  </div>
+                  <div *ngIf="this.regForm.get('pswd')?.touched&&this.regForm.get('pswd')?.errors"
+                        class="mb-3 text-danger">
+                        *Invalid Password!
+                    </div>
+                <div class="btn">
+                    <button type="button">Sign up</button>
+                    <div id="output"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
