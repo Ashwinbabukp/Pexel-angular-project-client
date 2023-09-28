@@ -19,6 +19,17 @@ body {
     text-decoration: none;
   }
   
+  .header__wrapper{
+    position: relative;
+  }
+
+  .navbar-brand{
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+  }
+
   .header__wrapper header {
     width: 100%;
     background: url("../../assets/bg.jpeg") no-repeat 50% 20% / cover;

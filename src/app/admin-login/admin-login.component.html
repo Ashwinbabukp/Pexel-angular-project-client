@@ -1,29 +1,28 @@
 <body>
 
-    <form [formGroup]="loginForm">
+    <form [formGroup]="adminloginForm">
         <div class="container">
             <div class="login">
-                <h1 class="mb-4" >login </h1>
+                <h1> Admin login </h1>
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" name="email" formControlName="email" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
+                    <label for="floatingInput">User ID</label>
                 </div>
-                <div *ngIf="this.loginForm.get('email')?.touched&&this.loginForm.get('email')?.errors"
+                <div *ngIf="this.adminloginForm.get('email')?.touched&&this.adminloginForm.get('email')?.errors"
                     class="mb-3 text-danger">
-                    *Invalid e-mail
+                    *Invalid User Id
                 </div>
                 <div id="output"></div>
                 <div class="form-floating">
                     <input type="password" class="form-control" name="pswd" formControlName="pswd" id="floatingPassword" placeholder="Password">
                     <label for="floatingPassword">Password</label>
                 </div>
-                <div *ngIf="this.loginForm.get('pswd')?.touched&&this.loginForm.get('pswd')?.errors"
+                <div *ngIf="this.adminloginForm.get('pswd')?.touched&&this.adminloginForm.get('pswd')?.errors"
                     class="mb-3 text-danger">
                     *Invalid Password!
                 </div>
-                <p class="p-2 mt-3" >new user click here to <a routerLink="/register">register</a></p>
                 <div class="btn">
-                    <button type="button" (click)="login()">Login</button>
+                    <button type="button">Login</button>
                     <div id="output"></div>
                 </div>
             </div>

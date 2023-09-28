@@ -1,10 +1,18 @@
 <body>
-    <form [formGroup]="regForm" >
-        <div class="container">
+    <form [formGroup]="regForm" (ngSubmit)="register()" >
+        <div class="container d-flex">
             <div class="signup">
-                <h1>Sign up </h1>
+                <h1 class="mb-3" >Sign up </h1>
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" name="email" formControlName="email" id="floatingInput" placeholder="name@example.com">
+                    <input type="text" class="form-control" name="uname" formControlName="uname" id="floatingName" placeholder="name@example.com">
+                    <label for="floatingInput">username</label>
+                  </div>
+                  <div *ngIf="this.regForm.get('uname')?.touched&&this.regForm.get('uname')?.errors"
+                        class="mb-3 text-danger">
+                        *Invalid username!
+                  </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" name="email" formControlName="email" id="floatingEmail" placeholder="name@example.com">
                     <label for="floatingInput">Email address</label>
                   </div>
                   <div *ngIf="this.regForm.get('email')?.touched&&this.regForm.get('email')?.errors"
@@ -19,9 +27,10 @@
                   <div *ngIf="this.regForm.get('pswd')?.touched&&this.regForm.get('pswd')?.errors"
                         class="mb-3 text-danger">
                         *Invalid Password!
-                    </div>
+                  </div>
+                  <p class="p-2 mt-3" >already a  user click here to <a routerLink="/login">Login</a></p>
                 <div class="btn">
-                    <button type="button">Sign up</button>
+                    <button  type="submit">Sign up</button>
                     <div id="output"></div>
                 </div>
             </div>

@@ -12,6 +12,9 @@ import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
 import { PhotoViewComponent } from './photo-view/photo-view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,14 +27,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     PageNotfoundComponent,
     PhotoViewComponent,
     DashboardComponent,
+    AdminComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

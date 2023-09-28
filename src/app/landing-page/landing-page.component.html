@@ -1,8 +1,6 @@
 <app-header></app-header>
-<div routerLink="photoview" class="container d-flex justify-content-center align-items-center mt-5">
-    <div class="card" style="width: 18rem;">
-        <img src="https://lh3.googleusercontent.com/pw/AIL4fc-cCrjkb0j5ZzwjdrXN0RwSzox9LK_sYVz_TwowZ0L5UCcDY3f3c9wMhwGYo1QmWK0ZFemQa8nEYWTLahDsNpvHS377nIeeTV6M5bEpczEYCdt_ZHs=w2400" class="card-img-top" alt="img">
-        <div class="card-body">
-        </div>
+<div routerLink="photoview" class="container d-flex justify-content-center align-items-center mt-5 gap-5 ">
+    <div class="card " style="width: 18rem;" *ngFor="let image of allImages">
+        <img [src]=image.url class="card-img-top" alt="img">
     </div>
 </div>

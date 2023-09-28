@@ -7,6 +7,8 @@ import { RegisterComponent } from './register/register.component';
 import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
 import { PhotoViewComponent } from './photo-view/photo-view.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 const routes: Routes = [
  {
@@ -23,6 +25,12 @@ const routes: Routes = [
  },
  {
   path:"dashboard",component:DashboardComponent
+ },
+ {
+  path:"admin",component:AdminComponent
+ },
+ {
+  path:"adminlogin",component:AdminLoginComponent
  },
  {
   path:"**",component:PageNotfoundComponent

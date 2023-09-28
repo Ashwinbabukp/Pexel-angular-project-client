@@ -1,19 +1,24 @@
 <div class="header__wrapper">
+    <a class="container ms-5 mt-2 navbar-brand d-flex align-items-center" href="#">
+        <img width="60px" src="../../assets/Logo on Transparent (1).png" alt="">
+        <p class="fw-bolder mt-2" style="font-size: 25px;">Pexels</p>
+    </a>
     <header></header>
     <div class="cols__container">
         <div class="left__col">
             <div class="img__container">
                 <img height=""
-                    src="https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1154"
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
                     alt="Anna Smith" />
                 <span></span>
             </div>
-            <button data-bs-toggle="modal" data-bs-target="#exampleModal-2" type="button" class="btn mt-5  "><i class="fa-solid fa-pencil"></i></button>
+            <button data-bs-toggle="modal" data-bs-target="#exampleModal-2" type="button" class="btn mt-5  "><i
+                    class="fa-solid fa-pencil"></i></button>
             <div class="profile">
-                <h2 style="font-size: 35px;">name</h2>
-                <p class="p-1"style="font-size: 17px;"><i class="fa-solid fa-location-dot"></i> place</p>
-                <p class="p-1"style="font-size: 17px;"><i class="fa-brands fa-instagram"></i> social-media-id</p>
-                <p class="p-1" style="font-size: 17px;"><i class="fa-brands fa-paypal"></i> Paypal id</p>
+                <h2 style="font-size: 35px;">{{userData.uname}}</h2>
+                <p class="p-1" style="font-size: 17px;"><i class="fa-solid fa-location-dot"></i> {{userData.place}}</p>
+                <p class="p-1" style="font-size: 17px;"><i class="fa-brands fa-instagram"></i> {{userData.social}}</p>
+                <p class="p-1" style="font-size: 17px;"><i class="fa-brands fa-paypal"></i> {{userData.paypal}}</p>
             </div>
 
             <ul class="about">
@@ -39,7 +44,7 @@
         <div class="right__col">
             <nav>
                 <ul>
-                    <li><a >photos</a></li>
+                    <li><a>photos</a></li>
                     <li><a href=""></a></li>
                     <li><a href=""></a></li>
                     <li><a href=""></a></li>
@@ -48,29 +53,8 @@
             </nav>
 
             <div class="photos">
-                <div class="animation">
-                    <img src="https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                        alt="Photo" />
-                </div>  
-                <div class="animation">
-                    <img src="https://images.pexels.com/photos/1166209/pexels-photo-1166209.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                    alt="Photo" />
-                </div>
-                <div class="animation">
-                    <img src="https://images.pexels.com/photos/808465/pexels-photo-808465.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                        alt="Photo" />
-                </div>
-                <div class="animation">
-                    <img src="https://images.pexels.com/photos/1108701/pexels-photo-1108701.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                        alt="Photo" />
-                </div>
-                <div class="animation">
-                    <img src="https://images.pexels.com/photos/1809644/pexels-photo-1809644.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                        alt="Photo" />
-                </div>
-                <div class="animation">
-                    <img src="https://images.pexels.com/photos/730981/pexels-photo-730981.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                        alt="Photo" />
+                <div class="animation" *ngFor="let userImage of allUserImages">
+                    <img [src]=userImage.url alt="Photo" />
                 </div>
             </div>
         </div>
@@ -85,23 +69,29 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Upload Photo</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Google Photo Embed Link</label>
-                </div>
-                <div class="container" >
-                    <p class="container" style="color: green;" >*How to Get EmbedGoogle Photo Link</p>
-                    <li>Copy Google Photo link</li>
-                    <li>Convert Google Photo link To Embed link <a href="https://www.labnol.org/embed/google/photos/" target="_blank" style="color: blue;" >Click here</a></li>
-                    <li>Then Select Direct Image Link And Paste it</li>
-                </div>
+            <form [formGroup]="uploadForm">
+                <div class="modal-body">
+                    <div class="form-floating mb-3">
+                        <input type="text" name="url" formControlName="url" class="form-control" id="floatingInput"
+                            placeholder="name@example.com">
+                        <label for="floatingInput">Google Photo Embed Link</label>
+                    </div>
+                    <div class="container">
+                        <p class="container" style="color: green;">*How to Get EmbedGoogle Photo Link</p>
+                        <li>Copy Google Photo link</li>
+                        <li>Convert Google Photo link To Embed link <a
+                                href="https://www.labnol.org/embed/google/photos/" target="_blank"
+                                style="color: blue;">Click here</a></li>
+                        <li>Then Select Direct Image Link And Paste it</li>
+                    </div>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Post</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        (click)="uploadImg()">Post</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -115,28 +105,50 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!-- edit profile input -->
-            <div class="modal-body">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Name</label>
+            <form [formGroup]="editForm">
+                <div class="modal-body">
+                    <!-- <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="name" formControlName="name" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Name</label>
+                    </div>
+                    <div *ngIf="this.editForm.get('name')?.touched&&this.editForm.get('name')?.errors"
+                    class="mb-3 text-danger">
+                    *Invalid name
+                    </div> -->
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="palce" formControlName="place" id="floatingInput"
+                            placeholder="name@example.com">
+                        <label for="floatingInput">Place</label>
+                    </div>
+                    <div *ngIf="this.editForm.get('place')?.touched&&this.editForm.get('place')?.errors"
+                        class="mb-3 text-danger">
+                        *Invalid Place
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="social" formControlName="social"
+                            id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Social media Id </label>
+                    </div>
+                    <div *ngIf="this.editForm.get('social')?.touched&&this.editForm.get('social')?.errors"
+                        class="mb-3 text-danger">
+                        *Invalid Id
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="paypal" formControlName="paypal"
+                            id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Paypal Id </label>
+                    </div>
+                    <div *ngIf="this.editForm.get('paypal')?.touched&&this.editForm.get('paypal')?.errors"
+                        class="mb-3 text-danger">
+                        *Invalid Paypal Id
+                    </div>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Place</label>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        (click)="editUser()">Save</button>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Social media Id </label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Paypal Id </label>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
